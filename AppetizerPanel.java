@@ -6,8 +6,8 @@ import java.util.List;
 public class AppetizerPanel extends MenuPanel {
     private List<MenuItem> appetizers;
     
-    public AppetizerPanel() {
-        super("Appetizers");
+    public AppetizerPanel(CartPanel cartPanel) {
+        super("Appetizers", cartPanel);
         initializeAppetizers();
         displayAppetizers();
     }
@@ -15,21 +15,15 @@ public class AppetizerPanel extends MenuPanel {
     private void initializeAppetizers() {
         appetizers = new ArrayList<>();
         // Add 6 unique appetizers
-        appetizers.add(new MenuItem("Bruschetta", "Toasted bread with tomatoes, garlic, and basil", 8.99, "images/bruschetta.jpg"));
-        appetizers.add(new MenuItem("Calamari", "Crispy fried squid with marinara sauce", 12.99, "images/calamari.jpg"));
-        appetizers.add(new MenuItem("Spinach Artichoke Dip", "Creamy dip with tortilla chips", 9.99, "images/spinach_dip.jpg"));
-        appetizers.add(new MenuItem("Mozzarella Sticks", "Breaded mozzarella with marinara sauce", 7.99, "images/mozzarella_sticks.jpg"));
-        appetizers.add(new MenuItem("Chicken Wings", "Buffalo wings with ranch dressing", 11.99, "images/wings.jpg"));
-        appetizers.add(new MenuItem("Shrimp Cocktail", "Chilled shrimp with cocktail sauce", 14.99, "images/shrimp_cocktail.jpg"));
+        appetizers.add(new MenuItem("Nachos", "Tortilla chips topped with melted cheese, refried beans, salsa, jalapenos, corn. Served with a side of guacamole.", 8.99, "nachos.jpg"));
+        appetizers.add(new MenuItem("Panchos", "The XL version of our world famous nachos. Served with a side of guacamole.", 12.99, "panchos.jpg"));
+        appetizers.add(new MenuItem("Breadsticks", "Crispy breadsticks with garlic butter", 6.99, "breadsticks.jpg"));
+        appetizers.add(new MenuItem("Cheese Sticks", "Breaded cheese with marinara sauce", 5.99, "cheese_sticks.jpg"));
+        appetizers.add(new MenuItem("Boneless Chicken Wings", "Your choice of 8 marinated wings with ranch dressing", 11.99, "wings.jpg"));
+        appetizers.add(new MenuItem("Seafood Platter", "An assortment of shrimp, scallops, and calamari", 25.99, "seafood_platter.jpg"));
     }
     
     private void displayAppetizers() {
-        Color[] colors = {new Color(240, 240, 240), new Color(220, 220, 220)};
-        int colorIndex = 0;
-        
-        for (MenuItem item : appetizers) {
-            itemsPanel.add(createItemPanel(item, colors[colorIndex]));
-            colorIndex = (colorIndex + 1) % colors.length;
-        }
+        displayItems(appetizers);
     }
 } 

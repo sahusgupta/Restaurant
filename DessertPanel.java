@@ -6,8 +6,8 @@ import java.util.List;
 public class DessertPanel extends MenuPanel {
     private List<MenuItem> desserts;
     
-    public DessertPanel() {
-        super("Desserts");
+    public DessertPanel(CartPanel cartPanel) {
+        super("Desserts", cartPanel);
         initializeDesserts();
         displayDesserts();
     }
@@ -15,19 +15,13 @@ public class DessertPanel extends MenuPanel {
     private void initializeDesserts() {
         desserts = new ArrayList<>();
         // Add 4 unique desserts
-        desserts.add(new MenuItem("Chocolate Lava Cake", "Warm chocolate cake with vanilla ice cream", 8.99, "images/lava_cake.jpg"));
-        desserts.add(new MenuItem("New York Cheesecake", "Classic cheesecake with berry compote", 7.99, "images/cheesecake.jpg"));
-        desserts.add(new MenuItem("Tiramisu", "Italian coffee-flavored dessert", 8.99, "images/tiramisu.jpg"));
-        desserts.add(new MenuItem("Crème Brûlée", "Vanilla custard with caramelized sugar", 7.99, "images/creme_brulee.jpg"));
+        desserts.add(new MenuItem("Chocolate Lava Cake", "Warm chocolate cake with vanilla ice cream", 8.99, "lava_cake.jpg"));
+        desserts.add(new MenuItem("Ice Cream Sandwich", "A classic ice cream sandwich with your choice of flavor", 7.99, "ice_cream_sandwich.jpg"));
+        desserts.add(new MenuItem("Chocolate Chip Cookie", "A warm chocolate chip cookie served with vanilla ice cream", 8.99, "cookie.jpg"));
+        desserts.add(new MenuItem("Fudge Heaven", "A decadent fudge with a rich chocolate flavor", 7.99, "fudge.jpg"));
     }
     
     private void displayDesserts() {
-        Color[] colors = {new Color(240, 240, 240), new Color(220, 220, 220)};
-        int colorIndex = 0;
-        
-        for (MenuItem item : desserts) {
-            itemsPanel.add(createItemPanel(item, colors[colorIndex]));
-            colorIndex = (colorIndex + 1) % colors.length;
-        }
+        displayItems(desserts);
     }
 } 

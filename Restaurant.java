@@ -5,6 +5,7 @@ public class Restaurant {
     private JFrame frame;
     private JPanel mainPanel;
     private CardLayout cardLayout;
+    private CartPanel cartPanel;
     
     public Restaurant() {
         frame = new JFrame("Restaurant Ordering System");
@@ -14,11 +15,14 @@ public class Restaurant {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         
+        // Create cart panel first
+        cartPanel = new CartPanel();
+        
         // Create and add different panels
-        mainPanel.add(new AppetizerPanel(), "APPETIZERS");
-        mainPanel.add(new EntreePanel(), "ENTREES");
-        mainPanel.add(new DessertPanel(), "DESSERTS");
-        mainPanel.add(new CartPanel(), "CART");
+        mainPanel.add(new AppetizerPanel(cartPanel), "APPETIZERS");
+        mainPanel.add(new EntreePanel(cartPanel), "ENTREES");
+        mainPanel.add(new DessertPanel(cartPanel), "DESSERTS");
+        mainPanel.add(cartPanel, "CART");
         
         // Create menu bar
         JMenuBar menuBar = new JMenuBar();
